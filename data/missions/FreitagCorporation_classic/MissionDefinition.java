@@ -30,7 +30,11 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Ecrevisse_Standard", FleetMemberType.SHIP, true);
         api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Euphausia_Standard", FleetMemberType.SHIP, true);
         api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Euphausia_Standard", FleetMemberType.SHIP, true);
+        api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Koura_Tanker", FleetMemberType.SHIP, true);
+        api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Koura_Liner", FleetMemberType.SHIP, true);
+        api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Koura_Freighter", FleetMemberType.SHIP, true);
 
+        
         api.addToFleet(FleetSide.ENEMY, "lasher_CS", FleetMemberType.SHIP, "Taskmaster", false);
         // Set up the map.
 

@@ -12,7 +12,8 @@
   "shieldRadius": 154.5,
   "viewOffset": 0,
   "builtInMods": [
-    "civgrade"
+    "civgrade",
+    "FreitagCorporation_Storage"
   ],
   "builtInWeapons": {
     "WS0001": "FreitagCorporation_ShieldEffect_wpn",

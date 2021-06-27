@@ -1,0 +1,36 @@
+{
+  "variantId": "FreitagCorporation_Koura_Freighter",
+  "hullId": "FreitagCorporation_Koura",
+  "displayName": "Freighter",
+  "goalVariant": true,
+  "fluxCapacitors": 17,
+  "fluxVents": 19,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "expanded_cargo_holds"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0006": "miningblaster",
+        "WS0007": "mininglaser",
+        "WS0008": "mininglaser"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "pdlaser",
+        "WS0003": "pdlaser",
+        "WS0004": "pdlaser",
+        "WS0005": "pdlaser"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}
