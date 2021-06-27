@@ -1,0 +1,12 @@
+{
+    	"graphics":{
+    		"fx":{
+          "FreitagCorporation_shieldsInner256":"graphics/fx/FreitagCorporation_shields256.png",
+          "FreitagCorporation_shieldsRing256":"graphics/fx/FreitagCorporation_shields256ring.png",
+          "FreitagCorporation_shieldsInner128":"graphics/fx/FreitagCorporation_shields128.png",
+          "FreitagCorporation_shieldsRing128":"graphics/fx/FreitagCorporation_shields128ring.png",
+          "FreitagCorporation_shieldsInner64":"graphics/fx/FreitagCorporation_shields64.png",
+          "FreitagCorporation_shieldsRing64":"graphics/fx/FreitagCorporation_shields64ring.png",
+        },
+      }
+}

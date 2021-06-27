@@ -1,0 +1,18 @@
+{
+	"civilianRandom":{
+		"FreitagCorporation_Crevette_Standard":1,
+		"FreitagCorporation_Ecrevisse_Standard":1,
+		"FreitagCorporation_Euphausia_Standard":1,
+	},
+	"tankerMedium":{
+		"FreitagCorporation_Koura_Tanker":1,
+	}
+	"freighterMedium":{
+		"FreitagCorporation_Koura_Freighter":1,
+	}
+	"linerMedium":{
+		"FreitagCorporation_Koura_Liner":1,
+	}
+
+
+}

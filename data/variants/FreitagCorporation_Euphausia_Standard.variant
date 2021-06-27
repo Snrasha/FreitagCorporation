@@ -1,0 +1,41 @@
+{
+  "variantId": "FreitagCorporation_Euphausia_Standard",
+  "hullId": "FreitagCorporation_Euphausia",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 17,
+  "fluxVents": 15,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0009": "heavymauler",
+        "WS0010": "hveldriver"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0002": "gravitonbeam",
+        "WS0005": "gravitonbeam"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "pdlaser",
+        "WS0004": "pdlaser",
+        "WS0007": "pdlaser",
+        "WS0008": "pdlaser"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

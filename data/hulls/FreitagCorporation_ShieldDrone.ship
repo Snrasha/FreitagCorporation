@@ -1,0 +1,61 @@
+{
+  "hullName": "Shield Drone",
+  "hullId": "FreitagCorporation_ShieldDrone",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/FreitagCorporation_ShieldDrone.png",
+  "style": "FREITAG_CORP_TECH",
+  "height": 66,
+  "width": 37,
+  "center": [18.5, 33],
+  "collisionRadius": 34,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 63.5,
+  "viewOffset": 0,
+  "builtInWeapons": {
+    "WS0002": "FreitagCorporation_ShieldEffect_wpn"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 62,
+      "angle": 0,
+      "locations": [14, -0.5]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-16.5, -3.5],
+      "length": 11,
+      "width": 6,
+      "angle": -172,
+      "contrailSize": 6,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-16.5, 2.5],
+      "length": 11,
+      "width": 6,
+      "angle": 171.5,
+      "contrailSize": 6,
+      "style": "FreitagCorporation_Engine"
+    }
+  ],
+  "bounds": [
+    -11, 9,
+    13.5, 14,
+    13.5, -14,
+    -11, -9
+  ]
+}

@@ -1,0 +1,3 @@
+name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sprite
+Storage Adaptibility,FreitagCorporation_Storage,,,,,,,,TRUE,,0,0,0,0,data.hullmods.FreitagCorporation_Storage,"Increases maximum fuel, cargo or crew capacity %s,%s,%s dependly of the first logistic hullmod Auxiliary Fuel Tanks, Expanded Cargo Holds or Additional Berthing.
+The maximum of logistic hullmod are augmented of one.",Increases maximum capacity,graphics/hullmods/expanded_cargo.png

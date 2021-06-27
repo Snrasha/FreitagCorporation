@@ -1,0 +1,196 @@
+{
+  "hullName": "Euphausia",
+  "hullId": "FreitagCorporation_Euphausia",
+  "hullSize": "CRUISER",
+  "spriteName": "graphics/ships/FreitagCorporation_Euphausia.png",
+  "style": "FREITAG_CORP_TECH",
+  "height": 382,
+  "width": 349,
+  "center": [173.5, 181],
+  "collisionRadius": 231.5,
+  "shieldCenter": [-1.5, 0],
+  "shieldRadius": 218.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "civgrade",
+    "fluxbreakers"
+  ],
+  "builtInWeapons": {
+    "WS0001": "FreitagCorporation_ShieldEffect_wpn",
+    "WS0003": "pdlaser",
+    "WS0004": "pdlaser",
+    "WS0007": "pdlaser",
+    "WS0008": "pdlaser"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [2.5, -0]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 118,
+      "angle": -45,
+      "locations": [-12.5, -68.5]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 118,
+      "angle": 45,
+      "locations": [-12.5, 68.5]
+    },
+    {
+      "id": "WS0002",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 56,
+      "angle": 17,
+      "locations": [191.5, -17]
+    },
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 56,
+      "angle": -17,
+      "locations": [191.5, 17]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 118,
+      "angle": 139,
+      "locations": [-99, 30.5]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 118,
+      "angle": -139,
+      "locations": [-99, -30.5]
+    },
+    {
+      "id": "WS0009",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "HIDDEN",
+      "arc": 56,
+      "angle": 0,
+      "locations": [65.5, -18.5]
+    },
+    {
+      "id": "WS0010",
+      "size": "MEDIUM",
+      "type": "HYBRID",
+      "mount": "HIDDEN",
+      "arc": 56,
+      "angle": -0,
+      "locations": [65.5, 18.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-152.5, -22],
+      "length": 110.5,
+      "width": 33,
+      "angle": 180,
+      "contrailSize": 33,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-152.5, 22],
+      "length": 110.5,
+      "width": 33,
+      "angle": -180,
+      "contrailSize": 33,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-29.5, -41],
+      "length": 45.789226,
+      "width": 19.03647,
+      "angle": -130.5,
+      "contrailSize": 19.03647,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-29.5, 41],
+      "length": 45.789226,
+      "width": 19.03647,
+      "angle": 130.5,
+      "contrailSize": 19.03647,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [25.5, -73.5],
+      "length": 26.256885,
+      "width": 9.343649,
+      "angle": -140.5,
+      "contrailSize": 9.343649,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [25.5, 73.5],
+      "length": 26.256885,
+      "width": 9.343649,
+      "angle": 140.5,
+      "contrailSize": 9.343649,
+      "style": "FreitagCorporation_Engine"
+    }
+  ],
+  "bounds": [
+    -112, 9.5,
+    -153, 9,
+    -153.5, 33,
+    -174, 35.5,
+    -154, 57,
+    -110, 46,
+    -95.5, 54,
+    -47.5, 28.5,
+    -2, 41,
+    -99, 167,
+    -39, 103,
+    32, 44.5,
+    42, 53,
+    25, 73,
+    122, 37,
+    196.5, 21,
+    193.5, 13,
+    57.5, 35,
+    57.5, -35,
+    193.5, -13,
+    196.5, -21,
+    122, -37,
+    25, -73,
+    42, -53,
+    32, -44.5,
+    -39, -103,
+    -99, -167,
+    -2, -41,
+    -47.5, -28.5,
+    -95.5, -54,
+    -110, -46,
+    -154, -57,
+    -174, -35.5,
+    -153.5, -33,
+    -153, -9,
+    -112, -9.5
+  ]
+}

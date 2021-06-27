@@ -1,0 +1,12 @@
+id,type,text1,text2,text3,notes
+FreitagCorporation_Crevette,SHIP,Mining frigate,,,
+FreitagCorporation_mininglaser,WEAPON,"Cheap utility laser that is hardwired for missile and fighter defense. This configuration gives it longer range than most point defense weapons.
+
+A Mk I mining laser features a fluoride gas gain medium refitted for combat. The micro-asteroid targeting package has been repurposed to track and target incoming missiles. Mostly useless for anything larger or armored targets. Has a built-in 670nm tracker beam.",,,
+FreitagCorporation_ShieldDrone,SHIP,Shield drone,,,
+FreitagCorporation_Ecrevisse,SHIP,Equipped with gravitionnel hands for move heavy stuff,,,
+FreitagCorporation_Euphausia,SHIP,"Ship equipped of a flux teleport, capable of dissipate flux of ally",,,
+FreitagCorporation_FluxEater,SHIP_SYSTEM,Generate a high amount of flux for dissipate the flux of a ally,Special,Generate a high amount of flux for dissipate the flux of a ally.,
+FreitagCorporation_Manipulator,SHIP_SYSTEM,"Temporarily engages a primary burn on the system travel drive of the ship. Provides a massive speed boost for a fixed time at the expense of being able to use shields or weapons. Activates an energy field that mitigates incoming damage.
+Stop at the near ennemi for repulse them.
+",Movement,Burn drive to the near ennemi for repulse it. A damper field reduce the incoming damage.,

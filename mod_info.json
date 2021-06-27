@@ -1,0 +1,20 @@
+{
+  "id":"FreitagCorporation",
+	"name":"Freitag Corporation",
+	"author":"Tecrys",
+	"version":"0.0",
+	"description":"",
+	"gameVersion":"0.95a-RC15",
+  "dependencies": [
+        {
+            "id": "lw_lazylib",
+            "name": "LazyLib",
+        },
+        {
+            "id": "shaderLib",
+            "name": "ZZ GraphicsLib",
+        }
+    ],
+	"jars":["jar/FreitagCorporationJar.jar"],
+	"modPlugin":"src.data.scripts.world.FreitagCorporation_ModPlugin",
+}

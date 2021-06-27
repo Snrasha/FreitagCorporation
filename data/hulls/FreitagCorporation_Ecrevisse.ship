@@ -1,0 +1,137 @@
+{
+  "hullName": "Ecrevisse",
+  "hullId": "FreitagCorporation_Ecrevisse",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/FreitagCorporation_Ecrevisse.png",
+  "style": "FREITAG_CORP_TECH",
+  "height": 243,
+  "width": 173,
+  "center": [86.5, 134.5],
+  "collisionRadius": 158.5,
+  "shieldCenter": [-6, -0],
+  "shieldRadius": 147,
+  "viewOffset": 0,
+  "builtInMods": [
+    "surveying_equipment",
+    "civgrade"
+  ],
+  "builtInWeapons": {
+    "WS0001": "FreitagCorporation_ShieldEffect_wpn",
+    "WS0002": "pdlaser",
+    "WS0006": "pdlaser"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0005",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "HIDDEN",
+      "arc": 23,
+      "angle": 0,
+      "locations": [41.5, -0]
+    },
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 180,
+      "angle": -90,
+      "locations": [-8, -14.5]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 180,
+      "angle": 90,
+      "locations": [-8, 14.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [30, -71.5],
+      "length": 27.617344,
+      "width": 12.574943,
+      "angle": -123.5,
+      "contrailSize": 128,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [30, 71.5],
+      "length": 27.617344,
+      "width": 12.574943,
+      "angle": 123.5,
+      "contrailSize": 128,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-78, -8],
+      "length": 45.193852,
+      "width": 21.425781,
+      "angle": -179,
+      "contrailSize": 21.425781,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-78, 8],
+      "length": 45.193852,
+      "width": 21.425781,
+      "angle": 179,
+      "contrailSize": 21.425781,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-36, -23],
+      "length": 11.059408,
+      "width": 6.614981,
+      "angle": 140,
+      "contrailSize": 128,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-36, 23],
+      "length": 11.059408,
+      "width": 6.614981,
+      "angle": -140,
+      "contrailSize": 128,
+      "style": "FreitagCorporation_Engine"
+    }
+  ],
+  "bounds": [
+    -78, 11,
+    -23, 21,
+    -76.5, 55.5,
+    -35, 43,
+    -18, 61.5,
+    0.5, 61,
+    14.5, 44.5,
+    35.5, 64.5,
+    84.5, 31.5,
+    96, 36.5,
+    97.5, 19.5,
+    45, 21,
+    45, -21,
+    97.5, -19.5,
+    96, -36.5,
+    84.5, -31.5,
+    35.5, -64.5,
+    14.5, -44.5,
+    0.5, -61,
+    -18, -61.5,
+    -35, -43,
+    -76.5, -55.5,
+    -23, -21,
+    -78, -11
+  ]
+}

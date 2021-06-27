@@ -1,0 +1,29 @@
+{
+"hullFrequency":{
+    "hulls":{
+        "FreitagCorporation_Crevette":0.2,
+        "FreitagCorporation_Ecrevisse":0.2,
+        "FreitagCorporation_Euphausia":0.2,
+        "FreitagCorporation_Koura":0.2,
+    },
+},
+  "knownShips":{
+    "tags":["FreitagCorporation_bp"],
+    "hulls":[
+      "FreitagCorporation_Crevette",
+            "FreitagCorporation_Ecrevisse",
+                  "FreitagCorporation_Euphausia",
+                  "FreitagCorporation_Koura",
+
+    ],
+  },
+  "shipsWhenImporting":{
+    "tags":["FreitagCorporation_bp"],
+    "hulls":[
+    "FreitagCorporation_Crevette",
+          "FreitagCorporation_Ecrevisse",
+                "FreitagCorporation_Euphausia",
+                "FreitagCorporation_Koura",
+    ],
+  },
+},

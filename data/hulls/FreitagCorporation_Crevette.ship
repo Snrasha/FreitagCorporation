@@ -1,0 +1,143 @@
+{
+  "hullName": "Crevette",
+  "hullId": "FreitagCorporation_Crevette",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/FreitagCorporation_Crevette.png",
+  "style": "FREITAG_CORP_TECH",
+  "height": 125,
+  "width": 148,
+  "center": [74, 62.5],
+  "collisionRadius": 83.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 78,
+  "viewOffset": 0,
+  "builtInMods": [
+    "repair_gantry",
+    "civgrade"
+  ],
+  "builtInWings": [
+    "FreitagCorporation_ShieldDrone_wing"
+  ],
+  "builtInWeapons": {
+    "WS0001": "FreitagCorporation_mininglaser",
+    "WS0002": "FreitagCorporation_mininglaser",
+    "WS0006": "FreitagCorporation_ShieldEffect_wpn",
+    "WS0007": "FreitagCorporation_mininglaser",
+    "WS0008": "FreitagCorporation_mininglaser"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 47,
+      "angle": 7,
+      "locations": [52.5, -29]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 47,
+      "angle": -7,
+      "locations": [52.5, 29]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "HIDDEN",
+      "arc": 20,
+      "angle": 0,
+      "locations": [26.5, -0]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, -0]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 54,
+      "angle": -15,
+      "locations": [13, 65.5]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 54,
+      "angle": 15,
+      "locations": [13, -65.5]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [-36, 0.5]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-53, -7],
+      "length": 55,
+      "width": 14,
+      "angle": 180,
+      "contrailSize": 14,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-53, 7],
+      "length": 55,
+      "width": 14,
+      "angle": -180,
+      "contrailSize": 14,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-39, -24],
+      "length": 18.271212,
+      "width": 9.036102,
+      "angle": -143.5,
+      "contrailSize": 9.036102,
+      "style": "FreitagCorporation_Engine"
+    },
+    {
+      "location": [-39, 24],
+      "length": 18.271212,
+      "width": 9.036102,
+      "angle": 143.5,
+      "contrailSize": 9.036102,
+      "style": "FreitagCorporation_Engine"
+    }
+  ],
+  "bounds": [
+    -50, 12,
+    -29, 37.5,
+    15, 67.5,
+    -7.5, 40.5,
+    55, 29,
+    5, 27.5,
+    26, 14,
+    26, -14,
+    5, -27.5,
+    55, -29,
+    -7.5, -40.5,
+    15, -67.5,
+    -29, -37.5,
+    -50, -12
+  ]
+}
