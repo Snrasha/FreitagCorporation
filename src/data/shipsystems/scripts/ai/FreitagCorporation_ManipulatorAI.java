@@ -19,7 +19,7 @@ public class FreitagCorporation_ManipulatorAI implements ShipSystemAIScript {
     private float RANGEOFBURN=1000;
 
     private float tracker = 0;
-    private float trackermax = 0;
+    private float trackermax = 0.2f;
 
     @Override
     public void advance(float amount, Vector2f missileDangerDir, Vector2f collisionDangerDir, ShipAPI target) {

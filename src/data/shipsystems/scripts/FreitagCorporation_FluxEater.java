@@ -16,6 +16,7 @@ import org.lazywizard.lazylib.combat.AIUtils;
 public class FreitagCorporation_FluxEater extends BaseShipSystemScript {
 
     protected static float FLUX_RANGE = 1500f;
+        public static float FLUX_CONVERTED_TIME = 2f;
 
     protected static float FLUX_MIN_CONVERTED = 0.7f;
     protected static String FLUX_STAT_ID = "FreitagCorporation_FluxEater_Stat";
@@ -77,8 +78,7 @@ public class FreitagCorporation_FluxEater extends BaseShipSystemScript {
                 if (fluxRemoved < 0) {
                     fluxRemoved = 0;
                 }
-                float time=2f;
-             //  Global.getCombatEngine().getCombatUI().addMessage(0, ": "+fluxRemoved);
+                float time=FLUX_CONVERTED_TIME;
 
                 // if flux dissipation flat is 5200/s added, the time is 1s. If time is 2, divide per 2 the flux dissi
                 fluxRemoved/=time;
@@ -95,7 +95,6 @@ public class FreitagCorporation_FluxEater extends BaseShipSystemScript {
         return new BaseEveryFrameCombatPlugin() {
             float elapsed = 0f;
             int state = 0;
-            float inc=0;
             
             
             
@@ -106,7 +105,6 @@ public class FreitagCorporation_FluxEater extends BaseShipSystemScript {
                     return;
                 }
                 elapsed += amount;
-                inc++;
                 if (elapsed > timeEffect) {
                     state++;
                     elapsed -= timeEffect;

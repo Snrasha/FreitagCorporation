@@ -8,3 +8,5 @@ Ecrevisse,FreitagCorporation_Ecrevisse,Manipulator ,Freitag Corporation,FreitagC
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Euphausia,FreitagCorporation_Euphausia,Flux eater,Freitag Corporation,FreitagCorporation_FluxEater,12,7000,700,7000,7500,425,75,,55,35,20,15,20,1250,OMNI,,125,0.5,1,,,100,225,300,150,3,30,8,80000,3,16,480,0.25,14,14,,,,,,,CIVILIAN,FreitagCorporation_bp,,0.5,2,3,,
 Koura,FreitagCorporation_Koura,Versatile Freighter,Freitag Corporation,maneuveringjets,7,5500,200,3000,2000,125,65,,45,25,10,10,10,1400,OMNI,,150,0.5,1,,,40,250,200,200,4,30,7,50000,3,20,480,0.25,7,7,,,,,,,"CIVILIAN, FREIGHTER, TANKER, TRANSPORT",FreitagCorporation_bp,,0.6,2,3,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Nathantia,FreitagCorporation_Nathantia,Support Capital,Freitag Corporation,FreitagCorporation_TemporalShellBuff,25,12000,1250,15000,25000,500,160,2,70,50,40,8,12,2600,OMNI,,180,0.25,1,,,400,900,500,550,8,60,8,360000,4,20,600,0.25,40,40,,,,,,,CIVILIAN,rare_bp,,0.6,2,4,,
