@@ -99,6 +99,9 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
         if (ally.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
             return false;
         }
+        // No ennemi ? Ignore it.
+        if(!ally.areSignificantEnemiesInRange())return false;
+        
         if ((hasFullAmmo && (player || ally.getAIFlags().hasFlag(AIFlags.PURSUING)))) {
             return true;
         }
@@ -120,6 +123,7 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
                 return false;
             }
         }
+        
 
         boolean fluxed = ally.getFluxTracker().getCurrFlux() / ally.getFluxTracker().getMaxFlux() > min;
 
