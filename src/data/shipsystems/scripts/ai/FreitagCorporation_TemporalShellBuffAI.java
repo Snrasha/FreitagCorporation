@@ -20,8 +20,6 @@ public class FreitagCorporation_TemporalShellBuffAI implements ShipSystemAIScrip
 
     private float tracker = 0;
     private float trackermax = 0.2f;
-    private List<ShipAPI> targetteds;
-    private float[] targettedsCount;
     @Override
     public void advance(float amount, Vector2f missileDangerDir, Vector2f collisionDangerDir, ShipAPI target) {
         if (engine == null) {
@@ -40,26 +38,14 @@ public class FreitagCorporation_TemporalShellBuffAI implements ShipSystemAIScrip
             if (ship.getFluxTracker().isOverloadedOrVenting()) {
                 return;
             }
-            int length=targetteds.size();
-            for(int i=0;i<length;i++){
-                targettedsCount[i]-=trackermax;
-                if(targettedsCount[i]<=0){
-                    targetteds.remove(i);
-                    for(int j=i+1;j<3;j++)targettedsCount[j-1]=targettedsCount[j];
-                    break;
-                }
-            }
             
-            
-            ShipAPI target2 = FreitagCorporation_TemporalShellBuff.getAvailableAllyTarget(ship,targetteds);
+            ShipAPI target2 = FreitagCorporation_TemporalShellBuff.getAvailableAllyTarget(ship);
             if (target2 == null) {
                 return;
             }
             if (!system.isOn()) {
                 
                 if (AIUtils.canUseSystemThisFrame(ship)) {
-                    targetteds.add(target2);
-                    targettedsCount[targetteds.size()-1]=2*FreitagCorporation_TemporalShellBuff.TEMPORAL_SHELL_TIME;
                     ship.useSystem();
                 }
             }
@@ -73,8 +59,6 @@ public class FreitagCorporation_TemporalShellBuffAI implements ShipSystemAIScrip
         this.engine = engine;
         this.tracker = 0;
         this.trackermax = 0.2f;
-        targetteds=new ArrayList<>();
-        targettedsCount=new float[system.getMaxAmmo()];
     }
 
 }

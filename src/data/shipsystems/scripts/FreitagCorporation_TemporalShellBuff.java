@@ -5,6 +5,7 @@ import com.fs.starfarer.api.combat.BaseEveryFrameCombatPlugin;
 import com.fs.starfarer.api.combat.EveryFrameCombatPlugin;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.ShipHullSpecAPI.ShipTypeHints;
 import com.fs.starfarer.api.combat.ShipSystemAPI;
 import com.fs.starfarer.api.combat.ShipwideAIFlags.AIFlags;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
@@ -21,9 +22,8 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
 
     public static final float MAX_TIME_MULT = 3f;
 
-    protected static float TEMPORAL_SHELL_RANGE = 1500f;
+    protected static float TEMPORAL_SHELL_RANGE = 2500f;
     protected static String TEMPORAL_SHELL_ID = "FreitagCorporation_TemporalShellBuff_Stat";
-    public static float TEMPORAL_SHELL_TIME = 2f;
 
     public static final Color JITTER_COLOR = new Color(90, 165, 255, 55);
     public static final Color JITTER_UNDER_COLOR = new Color(90, 165, 255, 155);
@@ -35,48 +35,95 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
         return ship.getMutableStats().getSystemRangeBonus().computeEffective(TEMPORAL_SHELL_RANGE);
     }
 
-    public static ShipAPI getAvailableAllyTarget(ShipAPI ship) {
-        ShipAPI target = null;
-        float min = 0.7f;
-        List<ShipAPI> allies = AIUtils.getNearbyAllies(ship, getRange(ship));
-        for (ShipAPI ally : allies) {
-            if (ally.isFighter() || !ally.isAlive()) {
+    private ShipAPI getShipAt(Vector2f loc) {
+        float min = Float.MAX_VALUE;
+        ShipAPI ship = null;
+        ShipAPI player = Global.getCombatEngine().getPlayerShip();
+        if(player!=null)
+        for (ShipAPI tmp : Global.getCombatEngine().getShips()) {
+            if (tmp.isShuttlePod()) {
                 continue;
             }
-            if (ally.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
+            if (tmp.isFighter()) {
+                continue;
+            }
+            if (player.getOwner() != tmp.getOwner()) {
                 continue;
             }
 
-            if (ally.getAIFlags().hasFlag(AIFlags.NEEDS_HELP)
-                    || ally.getAIFlags().hasFlag(AIFlags.PURSUING)
-                    || ally.getFluxTracker().getCurrFlux() / ally.getFluxTracker().getMaxFlux() > min) {
+            if (tmp.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
+                continue;
+            }
+
+            if (MathUtils.getDistance(tmp.getLocation(), loc) < (min + tmp.getCollisionRadius())) {
+                ship = tmp;
+                min = MathUtils.getDistance(tmp.getLocation(), loc);
+            }
+        }
+        return ship;
+    }
+
+    public static ShipAPI getAvailableAllyTarget(ShipAPI ship) {
+        ShipAPI target = null;
+        float min = 0.7f;
+
+        //If full ammo, be more aggressive.
+        boolean hasFullAmmo = ship.getSystem().getAmmo() == ship.getSystem().getMaxAmmo();
+        ShipAPI player = Global.getCombatEngine().getPlayerShip();
+        if (player != null && isAvailable(player, min, hasFullAmmo, true)
+                && player != ship
+                && player.getOwner() == ship.getOwner()
+                && !player.isHulk() && !player.isShuttlePod()
+                && MathUtils.getDistance(player, ship) < getRange(ship)) {
+            min = player.getFluxTracker().getCurrFlux() / player.getFluxTracker().getMaxFlux();
+            target = player;
+        }
+        List<ShipAPI> allies = AIUtils.getNearbyAllies(ship, getRange(ship));
+
+        //include himself
+        allies.add(ship);
+
+        for (ShipAPI ally : allies) {
+            if (isAvailable(ally, min, hasFullAmmo, false)) {
                 min = ally.getFluxTracker().getCurrFlux() / ally.getFluxTracker().getMaxFlux();
                 target = ally;
             }
         }
         return target;
     }
-    public static ShipAPI getAvailableAllyTarget(ShipAPI ship,List<ShipAPI> ignored) {
-        ShipAPI target = null;
-        float min = 0.7f;
-        List<ShipAPI> allies = AIUtils.getNearbyAllies(ship, getRange(ship));
-        for (ShipAPI ally : allies) {
-            if (ally.isFighter() || !ally.isAlive()) {
-                continue;
-            }
-            if (ally.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
-                continue;
-            }
-            if(ignored.contains(ally))continue;
 
-            if (ally.getAIFlags().hasFlag(AIFlags.NEEDS_HELP)
-                    || ally.getAIFlags().hasFlag(AIFlags.PURSUING)
-                    || ally.getFluxTracker().getCurrFlux() / ally.getFluxTracker().getMaxFlux() > min) {
-                min = ally.getFluxTracker().getCurrFlux() / ally.getFluxTracker().getMaxFlux();
-                target = ally;
+    private static boolean isAvailable(ShipAPI ally, float min, boolean hasFullAmmo, boolean player) {
+        if (ally.isFighter() || !ally.isAlive()) {
+            return false;
+        }
+        if (ally.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
+            return false;
+        }
+        if ((hasFullAmmo && (player || ally.getAIFlags().hasFlag(AIFlags.PURSUING)))) {
+            return true;
+        }
+
+        boolean carrier = ally.getVariant().getHints().contains(ShipTypeHints.CARRIER);
+        boolean combat = ally.getVariant().getHints().contains(ShipTypeHints.COMBAT);
+        boolean civilian = ally.getVariant().getHints().contains(ShipTypeHints.CIVILIAN);
+        boolean timid = ally.getCaptain() != null && ally.getCaptain().getPersonalityAPI().getId().equals("timid");
+
+//timid or civilian never need get it
+        if (!player) {
+            if (timid) {
+                return false;
+            }
+            if (civilian) {
+                return false;
+            }
+            if (carrier && !combat) {
+                return false;
             }
         }
-        return target;
+
+        boolean fluxed = ally.getFluxTracker().getCurrFlux() / ally.getFluxTracker().getMaxFlux() > min;
+
+        return ((ally.getAIFlags().hasFlag(AIFlags.NEEDS_HELP) || ally.getAIFlags().hasFlag(AIFlags.PURSUING) || fluxed));
     }
 
     public void apply(MutableShipStatsAPI stats, String id, ShipSystemStatsScript.State state, float effectLevel) {
@@ -109,14 +156,21 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
                     float max = getRange(ship) + ship.getCollisionRadius();
                     if (dist <= max) {
                         target = getShipAt(mousepos);
+                        if (target != null && target.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
+                            target = null;
+                        }
                     }
                 }
+
             } else {
                 target = getAvailableAllyTarget(ship);
             }
             if (target != null) {
                 Global.getSoundPlayer().playSound("mine_teleport", 1f, 1f, ship.getLocation(), ship.getVelocity());
-                Global.getCombatEngine().addPlugin(createTemporalShellBuffPlugin(target, TEMPORAL_SHELL_TIME));
+                Global.getCombatEngine().addPlugin(createTemporalShellBuffPlugin(target, ship.getSystem().getCooldown()-0.5f));
+            }
+            if(target==ship){
+                ship.getSystem().setCooldownRemaining(ship.getSystem().getCooldown()*MAX_TIME_MULT);
             }
 
         }
@@ -220,6 +274,9 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
                 return "OUT OF RANGE";
             } else {
                 ShipAPI shipFound = getShipAt(target);
+                if (shipFound != null && shipFound.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
+                    shipFound = null;
+                }
                 if (shipFound != null) {
                     return "READY";
                 } else {
@@ -228,25 +285,6 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
             }
         }
         return null;
-    }
-
-    private ShipAPI getShipAt(Vector2f loc) {
-        float min = Float.MAX_VALUE;
-        ShipAPI ship = null;
-        for (ShipAPI tmp : Global.getCombatEngine().getShips()) {
-            if (tmp.isShuttlePod()) {
-                continue;
-            }
-            if (tmp.isFighter()) {
-                continue;
-            }
-
-            if (MathUtils.getDistance(tmp.getLocation(), loc) < (min + tmp.getCollisionRadius())) {
-                ship = tmp;
-                min = MathUtils.getDistance(tmp.getLocation(), loc);
-            }
-        }
-        return ship;
     }
 
     @Override
@@ -261,6 +299,9 @@ public class FreitagCorporation_TemporalShellBuff extends BaseShipSystemScript {
                 return false;
             } else {
                 ShipAPI shipFound = getShipAt(target);
+                if (shipFound != null && shipFound.getMutableStats().getTimeMult().getFlatStatMod(TEMPORAL_SHELL_ID) != null) {
+                    shipFound = null;
+                }
                 if (shipFound != null) {
                     return true;
                 } else {
