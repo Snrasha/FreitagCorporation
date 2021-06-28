@@ -7,7 +7,9 @@
   "fluxVents": 15,
   "quality": 1,
   "permaMods": [],
-  "hullMods": [],
+  "hullMods": [
+    "hardenedshieldemitter"
+  ],
   "weaponGroups": [
     {
       "autofire": true,
@@ -21,8 +23,8 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "gravitonbeam",
-        "WS0005": "gravitonbeam"
+        "WS0002": "FreitagCorporation_triple_mininglaser",
+        "WS0005": "FreitagCorporation_triple_mininglaser"
       }
     },
     {

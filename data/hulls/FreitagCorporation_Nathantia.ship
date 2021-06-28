@@ -17,6 +17,8 @@
   ],
   "builtInWeapons": {
     "WS0001": "FreitagCorporation_ShieldEffect_wpn",
+    "WS0002": "FreitagCorporation_triple_mininglaser",
+    "WS0003": "FreitagCorporation_triple_mininglaser",
     "WS0005": "pdlaser",
     "WS0006": "pdlaser",
     "WS0007": "pdlaser",
@@ -41,19 +43,19 @@
     {
       "id": "WS0002",
       "size": "MEDIUM",
-      "type": "ENERGY",
+      "type": "BUILT_IN",
       "mount": "HIDDEN",
-      "arc": 28,
-      "angle": 0,
+      "arc": 34,
+      "angle": 17,
       "locations": [256.5, -16]
     },
     {
       "id": "WS0003",
       "size": "MEDIUM",
-      "type": "ENERGY",
+      "type": "BUILT_IN",
       "mount": "HIDDEN",
-      "arc": 28,
-      "angle": -0,
+      "arc": 34,
+      "angle": -17,
       "locations": [256.5, 16]
     },
     {

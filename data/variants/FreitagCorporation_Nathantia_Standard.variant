@@ -4,10 +4,12 @@
   "displayName": "Standard",
   "goalVariant": true,
   "fluxCapacitors": 42,
-  "fluxVents": 40,
+  "fluxVents": 49,
   "quality": 1,
   "permaMods": [],
-  "hullMods": [],
+  "hullMods": [
+    "advancedshieldemitter"
+  ],
   "weaponGroups": [
     {
       "autofire": false,
@@ -20,8 +22,8 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0002": "ionbeam",
-        "WS0003": "ionbeam"
+        "WS0002": "FreitagCorporation_triple_mininglaser",
+        "WS0003": "FreitagCorporation_triple_mininglaser"
       }
     },
     {
