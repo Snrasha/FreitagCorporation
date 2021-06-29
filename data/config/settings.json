@@ -8,5 +8,9 @@
           "FreitagCorporation_shieldsInner64":"graphics/fx/FreitagCorporation_shields64.png",
           "FreitagCorporation_shieldsRing64":"graphics/fx/FreitagCorporation_shields64ring.png",
         },
+"misc":{
+  "FreitagCorporation_DefensePlatformGraphic":"graphics/ships/FreitagCorporation_koura.png",
+
+},
       }
 }

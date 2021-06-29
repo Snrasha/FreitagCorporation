@@ -13,7 +13,6 @@ public class MissionDefinition implements MissionDefinitionPlugin {
     public void defineMission(MissionDefinitionAPI api) {
 
         // Set up the fleets
-        
         api.initFleet(FleetSide.PLAYER, "HSS", FleetGoal.ATTACK, false);
         api.initFleet(FleetSide.ENEMY, "ISS", FleetGoal.ATTACK, true);
 
@@ -34,9 +33,10 @@ public class MissionDefinition implements MissionDefinitionPlugin {
         api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Koura_Liner", FleetMemberType.SHIP, true);
         api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Koura_Freighter", FleetMemberType.SHIP, true);
         api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Nathantia_Standard", FleetMemberType.SHIP, true);
+        api.addToFleet(FleetSide.PLAYER, "FreitagCorporation_Sand_Hopper_Standard", FleetMemberType.SHIP, true);
+
         api.addToFleet(FleetSide.PLAYER, "lasher_CS", FleetMemberType.SHIP, "Taskmaster", false);
 
-        
         api.addToFleet(FleetSide.ENEMY, "lasher_CS", FleetMemberType.SHIP, "Taskmaster", false);
         // Set up the map.
 
@@ -47,6 +47,17 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
         api.addPlanet(0, 0, 400f, "barren", 200f, true);
         api.addRingAsteroids(0, 0, 30, 32, 32, 48, 200);
+        // add objectives
+        float minX = -width / 2;
+        float minY = -height / 2;
+        api.addObjective(minX + width * 0.25f + 2000f, minY + height * 0.5f,
+                "sensor_array");
+        api.addObjective(minX + width * 0.75f - 2000f, minY + height * 0.5f,
+                "comm_relay");
+        api.addObjective(minX + width * 0.33f + 2000f, minY + height * 0.4f,
+                "nav_buoy");
+        api.addObjective(minX + width * 0.66f - 2000f, minY + height * 0.6f,
+                "nav_buoy");
     }
 
 }

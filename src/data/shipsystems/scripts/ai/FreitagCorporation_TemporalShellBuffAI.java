@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
-import src.data.shipsystems.scripts.FreitagCorporation_FluxEater;
 import src.data.shipsystems.scripts.FreitagCorporation_TemporalShellBuff;
 
 public class FreitagCorporation_TemporalShellBuffAI implements ShipSystemAIScript {

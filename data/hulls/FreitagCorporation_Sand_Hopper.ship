@@ -1,0 +1,135 @@
+{
+  "hullName": "Sand Hopper",
+  "hullId": "FreitagCorporation_Sand_Hopper",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/FreitagCorporation_Sand_Hopper.png",
+  "style": "FREITAG_CORP_TECH",
+  "height": 257,
+  "width": 134,
+  "center": [67, 128.5],
+  "collisionRadius": 162.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 153,
+  "viewOffset": 0,
+  "builtInMods": [
+    "civgrade"
+  ],
+  "builtInWeapons": {
+    "WS0001": "FreitagCorporation_ShieldEffect_wpn",
+    "WS0004": "pdlaser",
+    "WS0005": "pdlaser",
+    "WS0006": "pdlaser",
+    "WS0007": "pdlaser",
+    "WS0008": "FreitagCorporation_Defense_Station_deco"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [73, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "HIDDEN",
+      "arc": 165,
+      "angle": -49,
+      "locations": [74.5, -19]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "HIDDEN",
+      "arc": 165,
+      "angle": 49,
+      "locations": [74.5, 19]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 113,
+      "angle": -56.5,
+      "locations": [36, -14.5]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 113,
+      "angle": 56.5,
+      "locations": [36, 14.5]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 113,
+      "angle": -130,
+      "locations": [-4, -7]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "BUILT_IN",
+      "mount": "HIDDEN",
+      "arc": 113,
+      "angle": 130,
+      "locations": [-4, 7]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HARDPOINT",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, -0],
+      "renderOrderMod": -1
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-16.5, 0.5],
+      "length": 54,
+      "width": 11,
+      "angle": 180,
+      "contrailSize": 11,
+      "style": "FreitagCorporation_Engine"
+    }
+  ],
+  "bounds": [
+    -122.5, 21,
+    -125, 36.5,
+    -93.5, 30.5,
+    -73.5, 51.5,
+    -37.5, 37,
+    -29.5, 46,
+    -5, 27,
+    -9.5, 51,
+    18, 56,
+    114.5, 28,
+    82.5, 17.5,
+    82.5, -17.5,
+    114.5, -28,
+    18, -56,
+    -9.5, -51,
+    -5, -27,
+    -29.5, -46,
+    -37.5, -37,
+    -73.5, -51.5,
+    -93.5, -30.5,
+    -125, -36.5,
+    -122.5, -21,
+    -13.5, -0
+  ]
+}
