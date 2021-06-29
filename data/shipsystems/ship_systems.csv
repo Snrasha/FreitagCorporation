@@ -2,3 +2,4 @@ name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u 
 Manipulator,FreitagCorporation_Manipulator,1,,,,,,,,,1,8,1,8,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,graphics/icons/hullsys/temporal_shell.png
 Flux Eater,FreitagCorporation_FluxEater,,,,,,0.5,,3,0.1,0.25,,0.75,1,,,,,,,,,,,,,graphics/icons/hullsys/high_energy_focus.png
 Temporal Buff,FreitagCorporation_TemporalShellBuff,,,,,,0.1,,3,0.1,0.25,,0.25,2,,,,,,,,,,,,,graphics/icons/hullsys/temporal_shell.png
+Repulsor,FreitagCorporation_Repulsor,1,,,,,,,,,3,,1,12,,,,,,,,,,,,,graphics/icons/hullsys/temporal_shell.png

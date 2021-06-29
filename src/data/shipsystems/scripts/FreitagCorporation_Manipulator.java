@@ -18,6 +18,7 @@ import org.lazywizard.lazylib.combat.AIUtils;
 import org.lazywizard.lazylib.combat.CombatUtils;
 import org.lazywizard.lazylib.combat.entities.SimpleEntity;
 import org.lwjgl.util.vector.Vector2f;
+import src.data.utils.Utils;
 
 public class FreitagCorporation_Manipulator extends BaseShipSystemScript {
 
@@ -96,7 +97,7 @@ public class FreitagCorporation_Manipulator extends BaseShipSystemScript {
                     Global.getCombatEngine().spawnEmpArcVisual(positionRepulse, null, MathUtils.getRandomPointOnCircumference(positionRepulse, 10), null, 10, Color.cyan, Color.BLUE);
             }
 
-            CustomRippleDistortion(positionRepulse, new Vector2f(0, 0), 200, 3f, false, 0f, 360f, 0.5f, 0f, 0.5f, 0.5f, 1f, 0f);
+            Utils.CustomRippleDistortion(positionRepulse, new Vector2f(0, 0), 200, 3f, false, 0f, 360f, 0.5f, 0f, 0.5f, 0.5f, 1f, 0f);
             if (ship.getSystem().getState().equals(ACTIVE))//ship.getSystem().setCooldownRemaining(0.1f);
             {
                 ship.getSystem().deactivate();
@@ -122,32 +123,4 @@ public class FreitagCorporation_Manipulator extends BaseShipSystemScript {
         return null;
     }
 
-    public static void CustomRippleDistortion(Vector2f loc, Vector2f vel, float size, float intensity, boolean flip, float angle, float arc, float edgeSmooth, float fadeIn, float last, float fadeOut, float growthTime, float shrinkTime) {
-
-        RippleDistortion ripple = new RippleDistortion(loc, vel);
-
-        ripple.setIntensity(intensity);
-        ripple.setSize(size);
-        ripple.setArc(angle - arc / 2, angle + arc / 2);
-        if (edgeSmooth != 0) {
-            ripple.setArcAttenuationWidth(edgeSmooth);
-        }
-        ripple.flip(flip);
-        if (fadeIn != 0) {
-            ripple.fadeInIntensity(fadeIn);
-        }
-        ripple.setLifetime(last);
-        if (fadeOut != 0) {
-            ripple.setAutoFadeIntensityTime(fadeOut);
-        }
-        if (growthTime != 0) {
-            ripple.fadeInSize(growthTime);
-        }
-        if (shrinkTime != 0) {
-            ripple.setAutoFadeSizeTime(shrinkTime);
-        }
-        ripple.setFrameRate(60);
-        DistortionShader.addDistortion(ripple);
-
-    }
 }
