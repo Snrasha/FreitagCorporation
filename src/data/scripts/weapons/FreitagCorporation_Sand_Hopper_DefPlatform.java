@@ -28,6 +28,8 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
     private boolean isDeployed = false;
     private float tracker = 0;
     private final float trackermax = 1f;
+    private final float launchPlatformAnyways = 20;
+    private float trackerBis = 0;
 
     //private CombatEntityAPI anchor;
     private SpriteAPI sprite;
@@ -52,6 +54,7 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
 
         if (tracker > trackermax) {
             tracker -= trackermax;
+
             ShipAPI ship = weapon.getShip();
 
             if (ship != null && ship.isAlive()) {
@@ -61,12 +64,20 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
                     return;
                 }
 
-                for (BattleObjectiveAPI objective : Global.getCombatEngine().getObjectives()) {
-                    // Global.getCombatEngine().getCombatUI().addMessage(0, objective.getImportance()+"");
-                    if (MathUtils.isWithinRange(ship, objective, 300)) {
-                        //weapon.usesAmmo();
-                        spawn(ship, objective);
-                        return;
+                if (Global.getCombatEngine().getObjectives().isEmpty()) {
+                    trackerBis += trackermax;
+                    if (trackerBis >= launchPlatformAnyways) {
+                        spawn(ship, null);
+                    }
+                } else {
+                    for (BattleObjectiveAPI objective : Global.getCombatEngine().getObjectives()) {
+                        // Global.getCombatEngine().getCombatUI().addMessage(0, objective.getImportance()+"");
+                        if (MathUtils.isWithinRange(ship, objective, 300)) {
+                            //weapon.usesAmmo();
+                            spawn(ship, objective);
+
+                            return;
+                        }
                     }
                 }
             }
@@ -154,32 +165,25 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
                 }
                 Vector2f vec;
                 if (objective != null) {
-                    vec = new Vector2f(source.getLocation().x - objective.getLocation().x,
-                            source.getLocation().y - objective.getLocation().y);
+                    vec = new Vector2f(objective.getLocation().x - source.getLocation().x,
+                            objective.getLocation().y - source.getLocation().y);
                     vec.normalise(vec);
-                    vec.scale(2f);
+                    vec.scale(50);
 
                 } else {
                     vec = new Vector2f(source.getVelocity().x, source.getVelocity().y);
-                }
 
+                    vec.scale(2);
+                }
                 this.objective = null;
                 shipSpawned.getVelocity().set(vec.x, vec.y);
             }
 
-            float progress = (elapsed - delay) / fadeInTime;
-            if (progress > 1f) {
-                progress = 1f;
-            }
-
-            //shipSpawned.setAlphaMult(progress);
-            if (progress < 0.5f) {
-                shipSpawned.blockCommandForOneFrame(ShipCommand.ACCELERATE);
-                shipSpawned.blockCommandForOneFrame(ShipCommand.TURN_LEFT);
-                shipSpawned.blockCommandForOneFrame(ShipCommand.TURN_RIGHT);
-                shipSpawned.blockCommandForOneFrame(ShipCommand.STRAFE_LEFT);
-                shipSpawned.blockCommandForOneFrame(ShipCommand.STRAFE_RIGHT);
-            }
+            shipSpawned.blockCommandForOneFrame(ShipCommand.ACCELERATE);
+            shipSpawned.blockCommandForOneFrame(ShipCommand.TURN_LEFT);
+            shipSpawned.blockCommandForOneFrame(ShipCommand.TURN_RIGHT);
+            shipSpawned.blockCommandForOneFrame(ShipCommand.STRAFE_LEFT);
+            shipSpawned.blockCommandForOneFrame(ShipCommand.STRAFE_RIGHT);
 
             shipSpawned.blockCommandForOneFrame(ShipCommand.USE_SYSTEM);
             shipSpawned.blockCommandForOneFrame(ShipCommand.TOGGLE_SHIELD_OR_PHASE_CLOAK);
@@ -191,20 +195,13 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
 
             shipSpawned.setCollisionClass(CollisionClass.NONE);
             shipSpawned.getMutableStats().getHullDamageTakenMult().modifyMult(this.getClass().getName(), 0f);
-            if (progress < 0.5f) {
 
-                if (MathUtils.isWithinRange(shipSpawned, source, 0)) {
-                    elapsed -= amount;
-                }
-                //shipSpawned.getVelocity().set(source.getVelocity());
-            } else if (progress > 0.75f) {
-
-                shipSpawned.setCollisionClass(collisionClass);
-                shipSpawned.getMutableStats().getHullDamageTakenMult().unmodifyMult(this.getClass().getName());
+            if (MathUtils.isWithinRange(shipSpawned, source, 0)) {
+                elapsed -= amount;
             }
 
             if (elapsed > fadeInTime) {
-
+                shipSpawned.setPhased(false);
                 shipSpawned.getVelocity().set(0, 0);
                 // shipSpawned.setAlphaMult(1f);
                 shipSpawned.setHoldFire(false);

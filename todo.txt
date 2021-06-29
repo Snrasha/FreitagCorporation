@@ -1,6 +1,5 @@
 -Require a icon hullmod for FreitagCorporation_Storage hullmod
 -Require HUD icon for FreitagCorporation_Manipulator
--Sand Hopper need the defense platform for the weapon decorative (the weapon will display the missile below the sand_hopper and will deploy it only above a objective or a marker).
 -Sand Hopper shipsystem is
 "also it's using that jump system with damper field
 like a burn drive plus damper field and ignores ship collision while it's on"

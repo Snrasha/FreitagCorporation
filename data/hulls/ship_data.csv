@@ -12,4 +12,4 @@ Koura,FreitagCorporation_Koura,Versatile Freighter,Freitag Corporation,maneuveri
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Nathantia,FreitagCorporation_Nathantia,Support Capital,Freitag Corporation,FreitagCorporation_TemporalShellBuff,25,12000,1250,15000,25000,500,160,2,70,50,40,8,12,2600,OMNI,,180,0.25,1,,,400,900,500,550,8,60,8,360000,4,20,600,0.25,40,40,,,,,,,"CIVILIAN,RENDER_ENGINES_BELOW_HULL",rare_bp,,0.6,2,4,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-Defense Platform,FreitagCorporation_WhitePlatform,Platform,Freitag Corporation,,1,3000,600,4000,5000,400,60,,0,0,0,10,10,500,OMNI,,180,0.1,1,,,0,0,0,0,1,80,,500000,,1,,,0,0,,,,,,,"UNBOARDABLE, HIDE_IN_CODEX",,,0.5,2,4,,
+Defense Platform,FreitagCorporation_WhitePlatform,Platform,Freitag Corporation,,1,3000,600,4000,5000,400,60,,0,0,0,4,4,500,OMNI,,180,0.1,1,,,0,0,0,0,1,80,,500000,,1,,,0,0,,,,,,,"UNBOARDABLE, HIDE_IN_CODEX",,,0.5,2,4,,
