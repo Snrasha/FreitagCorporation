@@ -176,8 +176,11 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
                     vec.scale(2);
                 }
                 this.objective = null;
+                //shipSpawned.
                 shipSpawned.getVelocity().set(vec.x, vec.y);
             }
+
+            shipSpawned.getVelocity().scale(0.99f);
 
             shipSpawned.blockCommandForOneFrame(ShipCommand.ACCELERATE);
             shipSpawned.blockCommandForOneFrame(ShipCommand.TURN_LEFT);
@@ -196,11 +199,7 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
             shipSpawned.setCollisionClass(CollisionClass.NONE);
             shipSpawned.getMutableStats().getHullDamageTakenMult().modifyMult(this.getClass().getName(), 0f);
 
-            if (MathUtils.isWithinRange(shipSpawned, source, 0)) {
-                elapsed -= amount;
-            }
-
-            if (elapsed > fadeInTime) {
+            if (!MathUtils.isWithinRange(shipSpawned, source, 0)) {
                 shipSpawned.setPhased(false);
                 shipSpawned.getVelocity().set(0, 0);
                 // shipSpawned.setAlphaMult(1f);

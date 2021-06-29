@@ -1,7 +1,7 @@
 {
   "hullName": "Defense Platform",
   "hullId": "FreitagCorporation_WhitePlatform",
-  "hullSize": "DESTROYER",
+  "hullSize": "CAPITAL_SHIP",
   "spriteName": "graphics/ships/FreitagCorporation_WhitePlatform.png",
   "style": "FREITAG_CORP_TECH",
   "height": 204,
