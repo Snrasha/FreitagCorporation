@@ -28,7 +28,7 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
     private boolean isDeployed = false;
     private float tracker = 0;
     private final float trackermax = 1f;
-    
+
     //private CombatEntityAPI anchor;
     private SpriteAPI sprite;
     private Vector2f size;
@@ -37,18 +37,16 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
     @Override
     public void advance(float amount, CombatEngineAPI engine, WeaponAPI weapon) {
 
-        
         if (engine.isPaused()) {
             return;
         }
         if (isDeployed) {
             return;
         }
-        if(sprite==null){
-            displaySprite(weapon);
+        if (sprite == null) {
+            displaySprite();
         }
-        MagicRender.singleframe(sprite,weapon.getShip().getLocation(), size, weapon.getShip().getFacing()-90, Color.WHITE, false, CombatEngineLayers.BELOW_SHIPS_LAYER);
-        
+        MagicRender.singleframe(sprite, weapon.getShip().getLocation(), size, weapon.getShip().getFacing() - 90, Color.WHITE, false, CombatEngineLayers.BELOW_SHIPS_LAYER);
 
         tracker += amount;
 
@@ -59,61 +57,40 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
             if (ship != null && ship.isAlive()) {
                 if (ship.getAIFlags().hasFlag(ShipwideAIFlags.AIFlags.REACHED_WAYPOINT)) {
                     // Global.getCombatEngine().getCombatUI().addMessage(0, "REACHED_WAYPOINT");
-                    spawn(ship);
+                    spawn(ship, null);
                     return;
                 }
 
                 for (BattleObjectiveAPI objective : Global.getCombatEngine().getObjectives()) {
                     // Global.getCombatEngine().getCombatUI().addMessage(0, objective.getImportance()+"");
-                    if (MathUtils.isWithinRange(ship, objective, 400)) {
+                    if (MathUtils.isWithinRange(ship, objective, 300)) {
                         //weapon.usesAmmo();
-                        spawn(ship);
+                        spawn(ship, objective);
                         return;
                     }
                 }
             }
         }
     }
-    private void displaySprite(WeaponAPI weapon){
-       // anchor=new AnchoredEntity(weapon.getShip(),new Vector2f(0,0));
-        
+
+    private void displaySprite() {
         sprite = Global.getSettings().getSprite("misc", "FreitagCorporation_DefensePlatformGraphic");
-     size= new Vector2f(sprite.getWidth(),sprite.getHeight());
-        /*  MagicRender.objectspace(sprite,
-                weapon.getShip(),
-                new Vector2f(0,0), 
-                new Vector2f(0,0), 
-                new Vector2f(sprite.getWidth(),sprite.getHeight()),
-                new Vector2f(0,0), 0, 0, true, Color.WHITE, true,
-                0,0,0,0,0,
-                1f, 10f, 1f,
-                true,CombatEngineLayers.BELOW_SHIPS_LAYER);
-               MagicRender.objectspace(sprite,
-                weapon.getShip(),
-                new Vector2f(10,0), 
-                new Vector2f(0,0), 
-                new Vector2f(sprite.getWidth(),sprite.getHeight()),
-                new Vector2f(0,0), 0, 0, true, Color.WHITE, false,
-                0,0,0,0,0,
-                1f, 10f, 1f,
-                true,CombatEngineLayers.BELOW_SHIPS_LAYER);
-               */
+        size = new Vector2f(sprite.getWidth(), sprite.getHeight());
     }
 
-    private void spawn(ShipAPI ship) {
-       // Global.getCombatEngine().removeEntity(anchor);
-      //  anchor=null;
-      sprite=null;
+    private void spawn(ShipAPI ship, BattleObjectiveAPI objective) {
+        sprite = null;
+        size = null;
         isDeployed = true;
-        DefensePlatformFadeInPlugin defensePlatform = createShipFadeInPlugin("FreitagCorporation_Koura_Freighter", ship, 0.5f, ship.getFacing());
+        DefensePlatformFadeInPlugin defensePlatform = createShipFadeInPlugin("FreitagCorporation_WhitePlatform_Standard", objective, ship, 0.5f, ship.getFacing());
         Global.getCombatEngine().addPlugin(defensePlatform);
 
     }
 
-    protected DefensePlatformFadeInPlugin createShipFadeInPlugin(final String variantId, final ShipAPI source,
+    protected DefensePlatformFadeInPlugin createShipFadeInPlugin(final String variantId, BattleObjectiveAPI objective, final ShipAPI source,
             final float fadeInTime, final float angle) {
 
-        return new DefensePlatformFadeInPlugin(variantId, source, fadeInTime, angle);
+        return new DefensePlatformFadeInPlugin(variantId, objective, source, fadeInTime, angle);
     }
 
     public static class DefensePlatformFadeInPlugin extends BaseEveryFrameCombatPlugin {
@@ -127,14 +104,15 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
         float delay;
         float fadeInTime;
         float angle;
+        BattleObjectiveAPI objective;
 
-        public DefensePlatformFadeInPlugin(String variantId, ShipAPI source, float fadeInTime, float angle) {
+        public DefensePlatformFadeInPlugin(String variantId, BattleObjectiveAPI objective, ShipAPI source, float fadeInTime, float angle) {
             this.variantId = variantId;
             this.source = source;
             this.fadeInTime = fadeInTime;
             this.angle = angle;
             delay = 0;
-
+            this.objective = objective;
         }
 
         @Override
@@ -149,7 +127,7 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
 
             if (shipSpawned == null) {
                 float facing = source.getFacing();
-                Vector2f loc = new Vector2f(0,0);
+                Vector2f loc = new Vector2f(0, 0);
                 Vector2f.add(loc, source.getLocation(), loc);
                 CombatFleetManagerAPI fleetManager = engine.getFleetManager(source.getOriginalOwner());
                 boolean wasSuppressed = fleetManager.isSuppressDeploymentMessages();
@@ -174,7 +152,19 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
                         map.put(deployed, sourceMember);
                     }
                 }
-                shipSpawned.getVelocity().set(source.getVelocity().x,source.getVelocity().y);
+                Vector2f vec;
+                if (objective != null) {
+                    vec = new Vector2f(source.getLocation().x - objective.getLocation().x,
+                            source.getLocation().y - objective.getLocation().y);
+                    vec.normalise(vec);
+                    vec.scale(2f);
+
+                } else {
+                    vec = new Vector2f(source.getVelocity().x, source.getVelocity().y);
+                }
+
+                this.objective = null;
+                shipSpawned.getVelocity().set(vec.x, vec.y);
             }
 
             float progress = (elapsed - delay) / fadeInTime;
@@ -183,7 +173,6 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
             }
 
             //shipSpawned.setAlphaMult(progress);
-
             if (progress < 0.5f) {
                 shipSpawned.blockCommandForOneFrame(ShipCommand.ACCELERATE);
                 shipSpawned.blockCommandForOneFrame(ShipCommand.TURN_LEFT);
@@ -203,7 +192,7 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
             shipSpawned.setCollisionClass(CollisionClass.NONE);
             shipSpawned.getMutableStats().getHullDamageTakenMult().modifyMult(this.getClass().getName(), 0f);
             if (progress < 0.5f) {
-               
+
                 if (MathUtils.isWithinRange(shipSpawned, source, 0)) {
                     elapsed -= amount;
                 }
@@ -215,9 +204,9 @@ public class FreitagCorporation_Sand_Hopper_DefPlatform implements EveryFrameWea
             }
 
             if (elapsed > fadeInTime) {
-                
-                shipSpawned.getVelocity().set(0,0);
-               // shipSpawned.setAlphaMult(1f);
+
+                shipSpawned.getVelocity().set(0, 0);
+                // shipSpawned.setAlphaMult(1f);
                 shipSpawned.setHoldFire(false);
                 shipSpawned.setCollisionClass(collisionClass);
                 shipSpawned.getMutableStats().getHullDamageTakenMult().unmodifyMult(this.getClass().getName());

@@ -1,0 +1,110 @@
+{
+  "hullName": "Defense Platform",
+  "hullId": "FreitagCorporation_WhitePlatform",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/FreitagCorporation_WhitePlatform.png",
+  "style": "FREITAG_CORP_TECH",
+  "height": 204,
+  "width": 141,
+  "center": [70.5, 102],
+  "collisionRadius": 140.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 129.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "targetingunit",
+    "missile_reload",
+    "fluxbreakers"
+  ],
+  "builtInWeapons": {
+    "WS0008": "FreitagCorporation_ShieldEffect_wpn"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 115,
+      "angle": -45,
+      "locations": [85, -40.5]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 131,
+      "angle": -110.5,
+      "locations": [3, -32]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 244,
+      "angle": 175,
+      "locations": [-74, -1.5]
+    },
+    {
+      "id": "WS0004",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 244,
+      "angle": 153.5,
+      "locations": [-43, 1.5]
+    },
+    {
+      "id": "WS0005",
+      "size": "LARGE",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 360,
+      "angle": 4,
+      "locations": [62, -17.5]
+    },
+    {
+      "id": "WS0006",
+      "size": "MEDIUM",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 215,
+      "angle": 76,
+      "locations": [37, 28.5]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 156,
+      "angle": 107,
+      "locations": [15, 32.5]
+    },
+    {
+      "id": "WS0008",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, 0]
+    }
+  ],
+  "engineSlots": [],
+  "bounds": [
+    52.5, 19.5,
+    98.5, -30.5,
+    82, -63.5,
+    -6.5, -50.5,
+    -31, -24,
+    -51.5, -38.5,
+    -80.5, -23.5,
+    -95, -26.5,
+    -94.5, -10.5,
+    26, 58.5,
+    54.5, 61
+  ]
+}
